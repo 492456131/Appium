@@ -10,7 +10,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.*;
 
 import java.io.File;
-import java.lang.reflect.Method;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -23,12 +22,13 @@ public class Basic {
     public PageManager pageManager;
     private Uihelper uihelper;
     private AppiumDriver appiumDriver;
-    private String deviceName = "192.168.200.101:5555";
+    private Utils utils;
+    private TestNGListener testNGListener;
+    private String deviceName = "Nexus 5";
     private String platformVersion = "4.4.4";
     private String apkName = "app-dev-debug.apk";
     private String appActivity = "com.jjshome.oa.activity.StartActivity";
     private String appPackage = "com.jjshome.oa";
-
 
 
     @BeforeMethod
@@ -42,7 +42,7 @@ public class Basic {
             capabilities.setCapability("appPackage", appPackage);
             capabilities.setCapability("noReset", true);
             capabilities.setCapability("appActivity", appActivity);
-            appiumDriver = new AndroidDriver(new URL("http://172.16.7.8:4723/wd/hub"), capabilities);
+            appiumDriver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
             uihelper = new Uihelper(appiumDriver);
             pageManager = new PageManager(uihelper);
             TestNGListener.setDriver(appiumDriver);
@@ -61,7 +61,7 @@ public class Basic {
     @AfterMethod
     public void tearDown() throws Exception {
         appiumDriver.quit();
-        //LogMessage.info("*************    退出appiumDriver   ************");
+        LogMessage.info("*************    退出appiumDriver   ************");
     }
 
    /* public String screen(AppiumDriver driver){
