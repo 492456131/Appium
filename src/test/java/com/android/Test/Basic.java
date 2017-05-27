@@ -23,7 +23,7 @@ public class Basic {
     public PageManager pageManager;
     private Uihelper uihelper;
     private AppiumDriver appiumDriver;
-    private String deviceName = "Nexus 5";
+    private String deviceName = "192.168.200.101:5555";
     private String platformVersion = "4.4.4";
     private String apkName = "app-dev-debug.apk";
     private String appActivity = "com.jjshome.oa.activity.StartActivity";
